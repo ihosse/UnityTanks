@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 [RequireComponent(typeof(PlayerInput), typeof(Rigidbody))]
 public class PlayerMove : MonoBehaviour
