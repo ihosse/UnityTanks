@@ -369,7 +369,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126470}
   serializedVersion: 8
-  lengthInSec: 0.75
+  lengthInSec: 1.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
@@ -615,8 +615,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2.5
-      minScalar: 0.5
+      scalar: 4
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5596,7 +5596,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169526}
   serializedVersion: 8
-  lengthInSec: 0.75
+  lengthInSec: 1.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
@@ -5842,8 +5842,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2.5
-      minScalar: 0.5
+      scalar: 4
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6460,7 +6460,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 15
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -10365,8 +10365,9 @@ GameObject:
   - component: {fileID: 6507708}
   - component: {fileID: 8261418}
   - component: {fileID: 8268710}
-  - component: {fileID: 2132584455778430907}
+  - component: {fileID: -8548239401396534823}
   - component: {fileID: 5489038046225002987}
+  - component: {fileID: 2132584455778430907}
   - component: {fileID: 7227998935468806154}
   m_Layer: 9
   m_Name: CompleteTank
@@ -10637,7 +10638,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &2132584455778430907
+--- !u!114 &-8548239401396534823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10646,7 +10647,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 173472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1271a48b922c38642b73e4ba6e4facc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4309670efb2b93541b448610445d7eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5489038046225002987
@@ -10712,6 +10713,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2132584455778430907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1271a48b922c38642b73e4ba6e4facc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7227998935468806154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10724,11 +10737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9198557ba4c046947ac65ef215d6ce90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderers:
-  - {fileID: 2365458}
-  - {fileID: 2365156}
-  - {fileID: 2310222}
-  - {fileID: 2342804}
 --- !u!1 &173936
 GameObject:
   m_ObjectHideFlags: 0

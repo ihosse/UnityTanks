@@ -4,9 +4,8 @@ using UnityEngine;
 public class PlayerColor : MonoBehaviour
 {
     private Renderer[] renderers;
-    private Color color;
 
-    void ApplyColor(Color color)
+    public void ApplyColor(Color color)
     {
         renderers = GetComponentsInChildren<Renderer>();
 
