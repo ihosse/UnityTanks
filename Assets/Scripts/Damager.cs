@@ -8,6 +8,9 @@ public class Damager : MonoBehaviour
 
     private void Start()
     {
+        if (explosionPrefab == null)
+            return;
+
         explosion = Instantiate(explosionPrefab.gameObject).GetComponent<ParticleSystem>();
         explosion.gameObject.SetActive(false);
     }
@@ -18,8 +21,10 @@ public class Damager : MonoBehaviour
         {
             damageable.Hit();
         }
-        CreateExplosionEffect(collision);
         transform.gameObject.SetActive(false);
+
+        if (explosionPrefab != null)
+            CreateExplosionEffect(collision);
     }
 
     private void CreateExplosionEffect(Collision collision)
