@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
         playerManagers = new List<PlayerManager> ();
         currentNumberOfPlayers = 0;
 
+        playerInputManager.EnableJoining();
+
         foreach (Transform spawnPosition in spawnPositions)
         {
             cinemachineTargetGroup.AddMember(spawnPosition, 1, 7);
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour
         playerManagers.Add(currentPlayer);
 
         currentPlayer.Initilize(colors[currentPlayerNumber]);
+
         currentPlayer.OnKill += OnPlayerKill;
 
         currentNumberOfPlayers++;
@@ -65,18 +68,19 @@ public class GameManager : MonoBehaviour
 
     private void OnStartGame()
     {
+        playerInputManager.DisableJoining();
+
         foreach (var player in playerManagers)
             player.playerShot.CanShot = true;
     }
 
     public void OnPlayerKill()
     {
-        foreach (var player in playerManagers)
-            player.playerShot.CanShot = false;
-
         if (CheckWinner(out int winnerNumber))
         {
             playerManagers[winnerNumber -1].playerMovement.CanMove = false;
+            playerManagers[winnerNumber - 1].playerShot.CanShot = false;
+
             StartCoroutine(gameUI.ShowEndGame(winnerNumber, OnEndGame));
         }
     }
