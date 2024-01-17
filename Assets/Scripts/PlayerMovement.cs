@@ -20,11 +20,16 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         if (!CanMove)
-            rigidbody.velocity = 10 * speed * transform.forward;
+            return;
+
+        rigidbody.velocity = 10 * speed * transform.forward;
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!CanMove)
+            return;
+
         if (context.phase == InputActionPhase.Performed)
         {
             Vector2 rawDirection = context.ReadValue<Vector2>();

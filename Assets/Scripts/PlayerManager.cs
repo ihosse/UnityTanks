@@ -22,6 +22,7 @@ public class PlayerManager : MonoBehaviour
         playerColor.ApplyColor(tankColor);
 
         playerShot.CanShot = false;
+        playerMovement.CanMove = true;
     }
     public void Initilize(Color tankColor) => this.tankColor = tankColor;
     public void Kill() => OnKill!.Invoke();
