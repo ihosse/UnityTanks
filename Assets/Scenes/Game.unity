@@ -1471,10 +1471,12 @@ MonoBehaviour:
   spawnPositions:
   - {fileID: 1675615247}
   - {fileID: 1662800448}
+  - {fileID: 1662800448}
   gameUI: {fileID: 1054360626}
   colors:
   - {r: 0, g: 1, b: 0.024693727, a: 0}
   - {r: 0, g: 0.5384617, b: 1, a: 0}
+  - {r: 1, g: 0.010550944, b: 0, a: 0}
 --- !u!1 &1392899371
 GameObject:
   m_ObjectHideFlags: 0
