@@ -1030,10 +1030,10 @@ MonoBehaviour:
   gameInfoText: {fileID: 1271680068}
   instructionsText: {fileID: 1392899373}
   gameTitle: TANKS
-  gameInfo: 'WINNER: Player 1'
+  gameWinner: 'WINNER: Player'
   waitForPlayers: WAITING FOR PLAYERS
   instructions: (Press any button or key to enter)
-  startGameInfo: Destroy your enemy!
+  startGameInfo: Weapons Unlocked!
 --- !u!1 &1261808942
 GameObject:
   m_ObjectHideFlags: 3
@@ -1044,8 +1044,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1261808943}
   - component: {fileID: 1261808946}
-  - component: {fileID: 1261808944}
   - component: {fileID: 1261808947}
+  - component: {fileID: 1261808948}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -1068,28 +1068,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 142197225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1261808944
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261808942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
 --- !u!114 &1261808946
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1141,6 +1119,28 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!114 &1261808948
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261808942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
 --- !u!1 &1271680066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,7 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1d0e785640b594db0ffc9ff8cd12f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cinemachinetagetGroup: {fileID: 963109657}
+  cinemachineTargetGroup: {fileID: 963109657}
   spawnPositions:
   - {fileID: 1675615247}
   - {fileID: 1662800448}

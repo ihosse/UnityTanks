@@ -20,7 +20,7 @@ public class UI : MonoBehaviour
     private string gameTitle = "TANKS";
 
     [SerializeField]
-    private string gameInfo = "WINNER: Player 1";
+    private string gameWinner = "WINNER: Player 1";
 
     [SerializeField]
     private string waitForPlayers = "WAITING FOR PLAYERS"; 
@@ -36,17 +36,16 @@ public class UI : MonoBehaviour
         gameInfoText.gameObject.SetActive(false);
         
         titleText.text = gameTitle;
-        UpdateWaitingPlayersMessage(totalNumberOfPlayers, activePlayers);
+        UpdateWaitingForPlayersMessage(totalNumberOfPlayers, activePlayers);
     }
 
-
-    public void UpdateWaitingPlayersMessage(int totalNumberOfPlayers, int activePlayers)
+    public void UpdateWaitingForPlayersMessage(int totalNumberOfPlayers, int activePlayers)
     {
         string activePlayersInfo = string.Format(" ({0}/{1})", activePlayers, totalNumberOfPlayers);
         instructionsText.text = waitForPlayers + activePlayersInfo + "\n" + instructions;
     }
 
-    public IEnumerator CountDown(int seconds, Action CallbackMethod)
+    public IEnumerator ShowCountDown(int seconds, Action CallbackMethod)
     {
         for (int i = 0; i < 10; i++)
         {
@@ -66,11 +65,23 @@ public class UI : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
 
-        yield return new WaitForSeconds(1f);
         gameInfoText.text = startGameInfo;
 
         yield return new WaitForSeconds(1f);
         gameInfoText.gameObject.SetActive(false);
         CallbackMethod?.Invoke();
+    }
+
+    public IEnumerator ShowEndGame(int winner, Action CallbackMethod)
+    {
+        yield return new WaitForSeconds(2f);
+        gameInfoText.gameObject.SetActive(true);
+        titleText.gameObject.SetActive(false);
+        instructionsText.gameObject.SetActive(false);
+
+        gameInfoText.text = gameWinner + " " + winner;
+
+        yield return new WaitForSeconds(2f);
+        CallbackMethod!.Invoke();
     }
 }

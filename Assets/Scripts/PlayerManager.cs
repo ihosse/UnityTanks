@@ -1,31 +1,28 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMovement), typeof(PlayerColor))]
+[RequireComponent(typeof(PlayerMovement), typeof(PlayerColor), typeof(PlayerShot))]
 public class PlayerManager : MonoBehaviour
 {
-    private PlayerMovement playerMovement;
+    public Action OnKill;
+
+    public PlayerMovement playerMovement {  get; private set; }
+
+    public PlayerShot playerShot { get; private set; }
+
     private PlayerColor playerColor;
     private Color tankColor;
+
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        playerShot = GetComponent<PlayerShot>();
         playerColor = GetComponent<PlayerColor>();
 
-        ApplyColor(tankColor);
-    }
-    
-    private void Update()
-    {
-        //playerMovement.Move();
-    }
+        playerColor.ApplyColor(tankColor);
 
-    public void Initilize(Color tankColor)
-    {
-        this.tankColor = tankColor;
+        playerShot.CanShot = false;
     }
-
-    public void ApplyColor(Color color)
-    {
-        playerColor.ApplyColor(color);
-    }
+    public void Initilize(Color tankColor) => this.tankColor = tankColor;
+    public void Kill() => OnKill!.Invoke();
 }

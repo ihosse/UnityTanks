@@ -2,12 +2,13 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 [RequireComponent (typeof(PlayerInputManager))]
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private CinemachineTargetGroup cinemachinetagetGroup;
+    private CinemachineTargetGroup cinemachineTargetGroup;
 
     [SerializeField]
     private Transform[] spawnPositions;
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
 
         foreach (Transform spawnPosition in spawnPositions)
         {
-            cinemachinetagetGroup.AddMember(spawnPosition, 1, 7);
+            cinemachineTargetGroup.AddMember(spawnPosition, 1, 7);
         }
 
         gameUI.ShowWelcomeScreen(playerInputManager.maxPlayerCount ,currentNumberOfPlayers);
@@ -46,22 +47,59 @@ public class GameManager : MonoBehaviour
             spawnPositions[currentPlayerNumber].rotation
             );
 
-        cinemachinetagetGroup.RemoveMember(spawnPositions[0]);
-        cinemachinetagetGroup.AddMember(currentPlayer.transform, 1, 7);
+        cinemachineTargetGroup.RemoveMember(spawnPositions[0]);
+        cinemachineTargetGroup.AddMember(currentPlayer.transform, 1, 7);
 
         playerManagers.Add(currentPlayer);
-        playerManagers[currentPlayerNumber].Initilize(colors[currentPlayerNumber]);
+
+        currentPlayer.Initilize(colors[currentPlayerNumber]);
+        currentPlayer.OnKill += OnPlayerKill;
 
         currentNumberOfPlayers++;
 
-        gameUI.UpdateWaitingPlayersMessage(playerInputManager.maxPlayerCount, currentNumberOfPlayers);
+        gameUI.UpdateWaitingForPlayersMessage(playerInputManager.maxPlayerCount, currentNumberOfPlayers);
 
         if (currentNumberOfPlayers >= playerInputManager.maxPlayerCount)
-            StartCoroutine(gameUI.CountDown(3, StartGame));
+            StartCoroutine(gameUI.ShowCountDown(3, OnStartGame));
     }
 
-    private void StartGame()
+    private void OnStartGame()
     {
-        print("começou!");
+        foreach (var player in playerManagers)
+            player.playerShot.CanShot = true;
     }
+
+    public void OnPlayerKill()
+    {
+        foreach (var player in playerManagers)
+            player.playerShot.CanShot = false;
+
+        if (CheckWinner(out int winnerNumber))
+        {
+            playerManagers[winnerNumber -1].playerMovement.CanMove = false;
+            StartCoroutine(gameUI.ShowEndGame(winnerNumber, OnEndGame));
+        }
+    }
+
+    private bool CheckWinner(out int winnerNumber)
+    {
+        int numbersOfAlivePlayers = 0;
+        winnerNumber = 0;
+
+        for (int i = 0; i < playerManagers.Count; i++)
+        {
+            if (playerManagers[i].gameObject.activeSelf)
+            {
+                numbersOfAlivePlayers++;
+                winnerNumber = i + 1;
+            }
+        }
+
+        if (numbersOfAlivePlayers == 1)
+            return true;
+        else
+            return false;
+    }
+
+    private void OnEndGame() => SceneManager.LoadScene(0);
 }

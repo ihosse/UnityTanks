@@ -10369,6 +10369,8 @@ GameObject:
   - component: {fileID: 5489038046225002987}
   - component: {fileID: 2132584455778430907}
   - component: {fileID: 7227998935468806154}
+  - component: {fileID: -8536880496363533149}
+  - component: {fileID: 4673656802318257418}
   m_Layer: 9
   m_Name: CompleteTank
   m_TagString: Untagged
@@ -10708,6 +10710,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6b26d4ba-e17b-4a46-b11e-28760679ec1b
     m_ActionName: Player/Accelerate[/XInputControllerWindows/rightTrigger,/XInputControllerWindows1/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8536880496363533149}
+        m_TargetAssemblyTypeName: PlayerShot, Assembly-CSharp
+        m_MethodName: OnShot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 02bfe127-9c53-4269-902c-adea4002f00a
+    m_ActionName: Player/Shot[/Keyboard/enter,/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
@@ -10737,6 +10755,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9198557ba4c046947ac65ef215d6ce90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8536880496363533149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0dca4f70727ca343b81f64351cb4687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 192454, guid: 008ecb1b70bec724fa2cd34255b0d8f8, type: 3}
+  shotPositionReference: {fileID: 435794}
+  bulletImpulse: 15
+--- !u!114 &4673656802318257418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53b4c7a94ac63f47b74d47e53541ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 19874418, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
+  OnKill:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8548239401396534823}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: Kill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &173936
 GameObject:
   m_ObjectHideFlags: 0
