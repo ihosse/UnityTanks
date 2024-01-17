@@ -20,7 +20,7 @@ public class UI : MonoBehaviour
     private string gameTitle = "TANKS";
 
     [SerializeField]
-    private string gameWinner = "WINNER: Player 1";
+    private string gameWinner = "WINNER: Player";
 
     [SerializeField]
     private string waitForPlayers = "WAITING FOR PLAYERS"; 
@@ -66,10 +66,10 @@ public class UI : MonoBehaviour
         }
 
         gameInfoText.text = startGameInfo;
+        CallbackMethod?.Invoke();
 
         yield return new WaitForSeconds(1f);
         gameInfoText.gameObject.SetActive(false);
-        CallbackMethod?.Invoke();
     }
 
     public IEnumerator ShowEndGame(int winner, Action CallbackMethod)
