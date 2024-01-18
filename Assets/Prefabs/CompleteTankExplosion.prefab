@@ -4897,6 +4897,7 @@ GameObject:
   - component: {fileID: 19874418}
   - component: {fileID: 19921400}
   - component: {fileID: 8232052}
+  - component: {fileID: 7342237016191124583}
   m_Layer: 0
   m_Name: CompleteTankExplosion
   m_TagString: Untagged
@@ -9782,9 +9783,9 @@ AudioSource:
   m_GameObject: {fileID: 151086}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24304612, guid: 86a7353f2579d476fbaa7f161c2e5d00,
+  OutputAudioMixerGroup: {fileID: -7934886643957407454, guid: 68a4829062eca9f44bd7531fc82cd401,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5c27182a28a7eb942a362e6d198fe0e6, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -9870,6 +9871,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7342237016191124583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a8f9055ff139f41833ddd93a22c910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 5c27182a28a7eb942a362e6d198fe0e6, type: 3}
 --- !u!1 &182560
 GameObject:
   m_ObjectHideFlags: 0

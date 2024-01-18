@@ -2,19 +2,22 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput), typeof(Rigidbody))]
+[RequireComponent(typeof(PlayerInput), typeof(Rigidbody), typeof(PlayerSound))]
 public class PlayerMovement : MonoBehaviour
 {
     public bool CanMove { get; set; }
 
     private PlayerInput playerInput;
     private new Rigidbody rigidbody;
+    private PlayerSound playerSound;
+
     private float speed;
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         rigidbody = GetComponent<Rigidbody>();
+        playerSound = GetComponent<PlayerSound>();
     }
 
     private void Update()
@@ -23,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         rigidbody.velocity = 10 * speed * transform.forward;
+
+        playerSound.ChangeEngineSound(speed > 0);
     }
 
     public void OnMove(InputAction.CallbackContext context)

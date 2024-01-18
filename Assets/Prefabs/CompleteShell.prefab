@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7323666298465296990}
   - component: {fileID: 1727995278625105232}
   - component: {fileID: 927941282683290842}
+  - component: {fileID: 7149704189183102748}
   m_Layer: 0
   m_Name: CompleteShell
   m_TagString: Untagged
@@ -249,7 +250,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6701e7ae443db16478a0464612432ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldDisableOnHit: 1
+--- !u!114 &7149704189183102748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49142ca03f97f65439f194f27f7fba76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 19807510, guid: 1911d89758d97cc4898d240e9e2545f4, type: 3}
+  timeToDisableExplosion: 0.3
 --- !u!1 &1291295503164410
 GameObject:
   m_ObjectHideFlags: 0

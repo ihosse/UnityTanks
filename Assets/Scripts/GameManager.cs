@@ -3,8 +3,9 @@ using Cinemachine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
-[RequireComponent (typeof(PlayerInputManager))]
+[RequireComponent (typeof(PlayerInputManager), typeof(BackGroundMusic))]
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -21,12 +22,14 @@ public class GameManager : MonoBehaviour
     
     private PlayerInputManager playerInputManager;
     private List<PlayerManager> playerManagers;
+    private BackGroundMusic backGroundMusic;
     private int currentNumberOfPlayers;
 
     private void Start()
     {
         playerInputManager = GetComponent<PlayerInputManager> ();
         playerManagers = new List<PlayerManager> ();
+        backGroundMusic = GetComponent<BackGroundMusic> ();
         currentNumberOfPlayers = 0;
 
         playerInputManager.EnableJoining();
@@ -63,12 +66,16 @@ public class GameManager : MonoBehaviour
         gameUI.UpdateWaitingForPlayersMessage(playerInputManager.maxPlayerCount, currentNumberOfPlayers);
 
         if (currentNumberOfPlayers >= playerInputManager.maxPlayerCount)
+        {
+            playerInputManager.DisableJoining();
             StartCoroutine(gameUI.ShowCountDown(3, OnStartGame));
+        }
     }
 
     private void OnStartGame()
     {
-        playerInputManager.DisableJoining();
+        backGroundMusic.PlayMusic();
+        backGroundMusic.ChangeSnapShot(backGroundMusic.GameSnapShot, 0);
 
         foreach (var player in playerManagers)
             player.playerShot.CanShot = true;
@@ -78,10 +85,15 @@ public class GameManager : MonoBehaviour
     {
         if (CheckWinner(out int winnerNumber))
         {
-            playerManagers[winnerNumber -1].playerMovement.CanMove = false;
-            playerManagers[winnerNumber - 1].playerShot.CanShot = false;
+            var playerWinner = playerManagers[winnerNumber - 1];
+
+            playerWinner.playerMovement.CanMove = false;
+            playerWinner.playerShot.CanShot = false;
+            playerWinner.isInvencible = true;
 
             StartCoroutine(gameUI.ShowEndGame(winnerNumber, OnEndGame));
+
+            backGroundMusic.ChangeSnapShot(backGroundMusic.WinnerSnapShot, 1);
         }
     }
 
@@ -92,7 +104,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < playerManagers.Count; i++)
         {
-            if (playerManagers[i].gameObject.activeSelf)
+            if (!playerManagers[i].IsDead)
             {
                 numbersOfAlivePlayers++;
                 winnerNumber = i + 1;
@@ -105,5 +117,15 @@ public class GameManager : MonoBehaviour
             return false;
     }
 
-    private void OnEndGame() => SceneManager.LoadScene(0);
+    private void OnEndGame()
+    {
+        StartCoroutine(EndGameAfterSeconds());
+    }
+
+    private IEnumerator EndGameAfterSeconds()
+    {
+        backGroundMusic.ChangeSnapShot(backGroundMusic.EndSnapShot, 1);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(0);
+    }
 }

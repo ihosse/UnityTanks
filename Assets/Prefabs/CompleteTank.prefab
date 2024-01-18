@@ -10370,7 +10370,9 @@ GameObject:
   - component: {fileID: 2132584455778430907}
   - component: {fileID: 7227998935468806154}
   - component: {fileID: -8536880496363533149}
+  - component: {fileID: 2118309181901610936}
   - component: {fileID: 4673656802318257418}
+  - component: {fileID: 7205358186511802922}
   m_Layer: 9
   m_Name: CompleteTank
   m_TagString: Untagged
@@ -10455,7 +10457,7 @@ AudioSource:
   m_GameObject: {fileID: 173472}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24378114, guid: 86a7353f2579d476fbaa7f161c2e5d00,
+  OutputAudioMixerGroup: {fileID: -3101295321957440902, guid: 68a4829062eca9f44bd7531fc82cd401,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4932ab25b84dd7649b80af68a9660ddc, type: 3}
   m_PlayOnAwake: 0
@@ -10503,7 +10505,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.75
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -10552,7 +10554,7 @@ AudioSource:
   m_GameObject: {fileID: 173472}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24304612, guid: 86a7353f2579d476fbaa7f161c2e5d00,
+  OutputAudioMixerGroup: {fileID: -7934886643957407454, guid: 68a4829062eca9f44bd7531fc82cd401,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -10652,6 +10654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4309670efb2b93541b448610445d7eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tankRenreder: {fileID: 151450}
 --- !u!114 &5489038046225002987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10770,6 +10773,22 @@ MonoBehaviour:
   bulletPrefab: {fileID: 192454, guid: 008ecb1b70bec724fa2cd34255b0d8f8, type: 3}
   shotPositionReference: {fileID: 435794}
   bulletImpulse: 15
+--- !u!114 &2118309181901610936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d5bcdded5319744a4e8b9cdc5309b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engineIdleSound: {fileID: 8300000, guid: 4932ab25b84dd7649b80af68a9660ddc, type: 3}
+  engineDrivingSound: {fileID: 8300000, guid: d7ca9fb5aa30155449192b23d7fb3336, type: 3}
+  shotFiringSound: {fileID: 8300000, guid: 672a9941361ad494a99fba36759eca80, type: 3}
+  tankExplosionSound: {fileID: 8300000, guid: 5c27182a28a7eb942a362e6d198fe0e6, type: 3}
 --- !u!114 &4673656802318257418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10782,7 +10801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a53b4c7a94ac63f47b74d47e53541ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 19874418, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
   OnKill:
     m_PersistentCalls:
       m_Calls:
@@ -10798,6 +10816,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7205358186511802922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49142ca03f97f65439f194f27f7fba76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 19874418, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
 --- !u!1 &173936
 GameObject:
   m_ObjectHideFlags: 0

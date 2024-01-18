@@ -1,40 +1,37 @@
+using System;
 using UnityEngine;
 
-public class Damager : MonoBehaviour
+public class Damager : MonoBehaviour, IExplodable
 {
+    public event Action<Vector3> OnExplode;
+
     [SerializeField]
-    private ParticleSystem explosionPrefab;
-    private ParticleSystem explosion;
-
-    private void Start()
-    {
-        if (explosionPrefab == null)
-            return;
-
-        explosion = Instantiate(explosionPrefab.gameObject).GetComponent<ParticleSystem>();
-        explosion.gameObject.SetActive(false);
-    }
+    private bool shouldDisableOnHit = true;
 
     private void OnCollisionEnter(Collision collision)
     {
+        OnExplode!.Invoke(collision.contacts[0].normal);
+
         if (collision.gameObject.TryGetComponent<Damageable>(out var damageable))
         {
             damageable.Hit();
         }
-        transform.gameObject.SetActive(false);
 
-        if (explosionPrefab != null)
-            CreateExplosionEffect(collision);
+        if (shouldDisableOnHit)
+            transform.gameObject.SetActive(false);
     }
 
-    private void CreateExplosionEffect(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Vector3 collisionNormal = collision.GetContact(0).normal;
+        if(OnExplode != null)
+            OnExplode(Vector3.up);
+        
+        if (other.gameObject.TryGetComponent<Damageable>(out var damageable))
+        {
+            damageable.Hit();
+        }
 
-        explosion.gameObject.SetActive(true);
-
-        explosion.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
-        explosion.transform.forward = collisionNormal;
-        explosion.Play();
+        if (shouldDisableOnHit)
+            transform.gameObject.SetActive(false);
     }
 }

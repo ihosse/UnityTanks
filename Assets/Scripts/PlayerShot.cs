@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent (typeof(PlayerInput))]
+[RequireComponent (typeof(PlayerInput), typeof(PlayerSound))]
 public class PlayerShot : MonoBehaviour
 {
     public bool CanShot { get; set; }
@@ -18,17 +18,22 @@ public class PlayerShot : MonoBehaviour
 
     private Rigidbody bullet;
     private PlayerInput playerInput;
+    private PlayerSound playerSound;
 
     private void Start()
     {
         bullet = Instantiate(bulletPrefab).GetComponent<Rigidbody>();
         bullet.gameObject.SetActive(false);
+
+        playerSound = GetComponent<PlayerSound>();
     }
 
     public void OnShot(InputAction.CallbackContext context)
     {
-        if (bullet == null || CanShot == false)
+        if (bullet == null || CanShot == false || bullet.gameObject.activeInHierarchy)
             return;
+
+        playerSound.PlayFiringSound();
 
         if(context.phase == InputActionPhase.Performed)
         {
