@@ -1,5 +1,5 @@
 # Tanks (Local Multiplayer)
-Is a small platform game using assets of Unity Tanks project. It was developed for studying game programming as part of my online unity course. 
+It's a small platform game using assets of Unity Tanks project. It was developed for studying game programming as part of my online unity course. 
 All the gameplay code was redone by myself.
 
 ## Features:
