@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Damager : MonoBehaviour, IExplodable
 {
+    public int PlayerId { get; set; }
     public event Action<Vector3> OnExplode;
 
     [SerializeField]
@@ -14,7 +15,7 @@ public class Damager : MonoBehaviour, IExplodable
 
         if (collision.gameObject.TryGetComponent<Damageable>(out var damageable))
         {
-            damageable.Hit();
+            damageable.Hit(PlayerId);
         }
 
         if (shouldDisableOnHit)
@@ -28,7 +29,7 @@ public class Damager : MonoBehaviour, IExplodable
         
         if (other.gameObject.TryGetComponent<Damageable>(out var damageable))
         {
-            damageable.Hit();
+            damageable.Hit(PlayerId);
         }
 
         if (shouldDisableOnHit)

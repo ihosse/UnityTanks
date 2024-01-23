@@ -909,6 +909,37 @@ MonoBehaviour:
   m_RotationMode: 0
   m_UpdateMethod: 2
   m_Targets: []
+--- !u!1 &1023261825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1023261826}
+  m_Layer: 0
+  m_Name: TankSpawnPosition3
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1023261826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023261825}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.05985083, z: -0, w: 0.99820733}
+  m_LocalPosition: {x: 6.64, y: 0, z: -20.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -6.863, z: 0}
 --- !u!1 &1054360621
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,12 +989,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1600,14 +1631,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cinemachineTargetGroup: {fileID: 963109657}
   spawnPositions:
+  - {fileID: 1662800448}
   - {fileID: 1675615247}
-  - {fileID: 1662800448}
-  - {fileID: 1662800448}
+  - {fileID: 1023261826}
+  - {fileID: 1977160459}
   gameUI: {fileID: 1054360626}
   colors:
   - {r: 0, g: 1, b: 0.024693727, a: 0}
   - {r: 0, g: 0.5384617, b: 1, a: 0}
   - {r: 1, g: 0.010550944, b: 0, a: 0}
+  - {r: 1, g: 0, b: 0.9600029, a: 0}
 --- !u!114 &1343558710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1817,7 +1850,7 @@ Transform:
   m_GameObject: {fileID: 1662800447}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.8398568, z: 0, w: 0.54280806}
-  m_LocalPosition: {x: -5.81, y: 0, z: 2.27}
+  m_LocalPosition: {x: -13.94, y: 0, z: 9.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1848,12 +1881,43 @@ Transform:
   m_GameObject: {fileID: 1675615246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.47308895, z: 0, w: 0.8810147}
-  m_LocalPosition: {x: 5.49, y: 0, z: -3.51}
+  m_LocalPosition: {x: 9.7, y: 0, z: 0.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -56.47, z: 0}
+--- !u!1 &1977160458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1977160459}
+  m_Layer: 0
+  m_Name: TankSpawnPosition4
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1977160459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977160458}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.36975932, z: -0, w: 0.9291276}
+  m_LocalPosition: {x: -11.27, y: 0, z: -12.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 43.402, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1871,6 +1935,8 @@ SceneRoots:
   - {fileID: 1306428487}
   - {fileID: 1662800448}
   - {fileID: 1675615247}
+  - {fileID: 1023261826}
+  - {fileID: 1977160459}
   - {fileID: 607450494}
   - {fileID: 1054360625}
   - {fileID: 866653113}

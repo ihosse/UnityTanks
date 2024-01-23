@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
 
         playerManagers.Add(currentPlayer);
 
+        currentPlayer.PlayerId = currentPlayerNumber;
         currentPlayer.Initilize(colors[currentPlayerNumber]);
 
         currentPlayer.OnKill += OnPlayerKill;
