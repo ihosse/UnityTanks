@@ -3,5 +3,5 @@ using UnityEngine;
 
 public interface IExplodable
 {
-    public event Action<Vector3> OnExplode;
+    public event Action<Vector3, int> OnExplode;
 }

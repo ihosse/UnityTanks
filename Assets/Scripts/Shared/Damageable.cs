@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class Damageable : MonoBehaviour, IExplodable
 {
     public int PlayerID { get; set; }
-    public event Action<Vector3> OnExplode;
+    public event Action<Vector3, int> OnExplode;
     public UnityEvent OnKill;
 
     public void Hit(int damagerPlayerID)
@@ -13,7 +13,7 @@ public class Damageable : MonoBehaviour, IExplodable
         if (PlayerID == damagerPlayerID)
             return;
 
-        OnExplode!.Invoke(Vector3.up);
+        OnExplode!.Invoke(Vector3.up, PlayerID);
         OnKill!.Invoke();
     }
 }

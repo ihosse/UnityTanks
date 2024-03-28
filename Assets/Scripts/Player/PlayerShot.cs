@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerShot : MonoBehaviour
 {
     public bool CanShot { get; set; }
-    public int PlayerId { get; set; }
 
     [SerializeField]
     private GameObject bulletPrefab;
@@ -18,15 +17,14 @@ public class PlayerShot : MonoBehaviour
     private float bulletImpulse = 15;
 
     private Rigidbody bullet;
-    private PlayerInput playerInput;
     private PlayerSound playerSound;
 
-    private void Start()
+    public void CreateShot(int playerId)
     {
         bullet = Instantiate(bulletPrefab).GetComponent<Rigidbody>();
         bullet.gameObject.SetActive(false);
 
-        bullet.gameObject.GetComponent<Damager>().PlayerId = PlayerId;
+        bullet.gameObject.GetComponent<Damager>().PlayerId = playerId;
 
         playerSound = GetComponent<PlayerSound>();
     }

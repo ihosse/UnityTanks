@@ -2,11 +2,10 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement), typeof(PlayerColor))]
-[RequireComponent(typeof(PlayerShot), typeof(PlayerSound))]
+[RequireComponent(typeof(PlayerShot), typeof(PlayerSound), typeof(Damageable))]
 public class PlayerManager : MonoBehaviour
 {
     public Action OnKill;
-    public int PlayerId { get; set; }
 
     public bool isInvencible { get; set; }
 
@@ -21,8 +20,10 @@ public class PlayerManager : MonoBehaviour
 
     private PlayerSound playerSound;
     private PlayerColor playerColor;
-    private Damageable damager;
+    private Damageable damageable;
+
     private Color tankColor;
+    private int playerId;
 
     private void Start()
     {
@@ -30,17 +31,19 @@ public class PlayerManager : MonoBehaviour
         playerShot = GetComponent<PlayerShot>();
         playerColor = GetComponent<PlayerColor>();
         playerSound = GetComponent<PlayerSound>();
-        damager = GetComponent<Damageable>();
+        damageable = GetComponent<Damageable>();
 
         playerColor.ApplyColor(tankColor);
-        damager.PlayerID = PlayerId;
+        playerShot.CreateShot(playerId);
+        damageable.PlayerID = playerId;
 
         playerShot.CanShot = false;
         playerMovement.CanMove = true;
     }
-    public void Initilize(Color tankColor)
+    public void Initilize(Color tankColor, int playerId)
     {
         this.tankColor = tankColor;
+        this.playerId = playerId;
     }
     public void Kill()
     {
